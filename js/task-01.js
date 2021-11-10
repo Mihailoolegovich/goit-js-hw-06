@@ -1,14 +1,3 @@
-// Number of categories: 3
-
-// Category: Animals
-// Elements: 4
-
-// Category: Products
-// Elements: 3
-
-// Category: Technologies
-// Elements: 5
-
 const categories = document.querySelector("#categories");
 console.log("Number of categories:", categories.children.length);
 
