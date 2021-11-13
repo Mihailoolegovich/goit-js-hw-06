@@ -1,3 +1,5 @@
+"use string";
+
 const ingredients = [
   "Potatoes",
   "Mushrooms",
@@ -31,3 +33,10 @@ const addLiIngredientsIdEl = () =>
 addLiIngredientsIdEl();
 
 console.log("ingredientsIdEl", ingredientsIdEl);
+
+// Напиши скрипт, который для каждого элемента массива ingredients:
+
+// Создаст отдельный элемент <li>. Обзательно используй метод document.createElement().
+// Добавит название ингредиента как его текстовое содержимое.
+// Добавит элементу класс item.
+// После чего вставит все <li> за одну операцию в список ul.ingredients.
