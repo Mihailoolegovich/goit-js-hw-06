@@ -4,17 +4,13 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const changeColorBtn = document.querySelector('.change-color');
-const colorName = document.querySelector('.color');
+const changeColorBtn = document.querySelector(".change-color");
+const colorName = document.querySelector(".color");
 
-
-changeColorBtn.addEventListener('click', () => {
-
-  const ret = getRandomHexColor();
-  document.body.style.backgroundColor = ret;
-  colorName.textContent = ret;
-})
-
+changeColorBtn.addEventListener("click", () => {
+  document.body.style.backgroundColor = getRandomHexColor();
+  colorName.textContent = document.body.style.backgroundColor;
+});
 
 // Напиши скрипт, который изменяет цвета фона элемента <body> через инлайн стиль при клике на button.change-color и выводит значение цвета в span.color.
 
