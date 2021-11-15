@@ -22,15 +22,14 @@ const ingredients = [
 
 const ingredientsIdEl = document.querySelector("#ingredients");
 
-const addLiIngredientsIdEl = () =>
-  ingredients.map((element) => {
-    const lastItem = document.createElement("li");
-    lastItem.classList.add("item");
-    lastItem.textContent = element;
-    return ingredientsIdEl.append(lastItem);
-  });
+const addLiIngredientsIdEl = ingredients.map((element) => {
+  const lastItem = document.createElement("li");
+  lastItem.classList.add("item");
+  lastItem.textContent = element;
+  return lastItem;
+});
 
-addLiIngredientsIdEl();
+ingredientsIdEl.append(...addLiIngredientsIdEl);
 
 console.log("ingredientsIdEl", ingredientsIdEl);
 
