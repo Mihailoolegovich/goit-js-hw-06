@@ -1,39 +1,43 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
-const inputNum = document.querySelector('input[type="number"]');
-const createBtn = document.querySelector("[data-create]");
-const destroyBtn = document.querySelector("[data-destroy]");
-const boxesEl = document.querySelector("#boxes");
-let sizeDiv = 30;
-function createBoxes (amount) {
-  const addNewDiv = `<div style=" width: ${sizeDiv}px; height: ${sizeDiv}px; background-color: ${getRandomHexColor()}; margin: 5px;" ></div>`;
-
-  sizeDiv += 10;
-
-  boxesEl.insertAdjacentHTML("beforeend", addNewDiv);
 };
 
-boxesEl.style.display = "flex";
-boxesEl.style.flexWrap = "wrap";
+const refs = {
+  inputNum: document.querySelector('input[type="number"]'),
+  createBtn: document.querySelector("[data-create]"),
+  destroyBtn: document.querySelector("[data-destroy]"),
+  boxesEl: document.querySelector("#boxes"),
+};
 
-createBtn.addEventListener("click", createBoxes);
-// () =>{
-// inputNum.addEventListener("input", (event) => {
-//   inputValue = event.target.value
-//   if (inputValue === 0) {
-//     return;
-//   }
-//   createBoxes();
-//   inputValue -= 1;
-//   console.log('inputValue', inputValue);
+refs.createBtn.addEventListener("click", () => createBoxes(refs.inputNum.value));
+refs.destroyBtn.addEventListener("click", destroyBoxes);
 
-//   // return inputValue = event.target.value;
-//  });
-// }
-// );
+function createBoxes(amount) {
+  const items = [];
+  for (let j = 0, sizeDiv = 30; j < amount; j++, sizeDiv += 10) {
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("boxes__element");
+    itemDiv.style.backgroundColor = getRandomHexColor();
+    itemDiv.style.width = sizeDiv + "px";
+    itemDiv.style.height = sizeDiv + "px";
+    itemDiv.style.margin = "5px";
+    items.push(itemDiv);
+  }
+  refs.boxesEl.append(...items);
+  refs.inputNum.value = "";
+};
 
+function destroyBoxes() {
+  refs.boxesEl.innerHTML = "";
+  refs.inputNum.value = "";
+  console.log("refs.boxesEl 4", refs.boxesEl);
+};
+
+// style Boxes
+refs.boxesEl.style.display = "flex";
+refs.boxesEl.style.flexWrap = "wrap";
+refs.boxesEl.style.alignItems = "center";
+//
 // Напиши скрипт создания и очистки коллекции элементов. Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция. При нажатии на кнопку Очистить, коллекция элементов очищается.
 
 // Создай функцию createBoxes(amount), которая принимает один параметр - число. Функция создает столько <div>, сколько указано в amount и добавляет их в div#boxes.

@@ -17,9 +17,13 @@ const images = [
 
 const galleryEl = document.querySelector(".gallery");
 
-const addImages = images.map((element) => {
-  return `<li><img src="${element.url}" alt="${element.alt}" width = "100%" height ="100%"></li>`;
-});
+const addImages = images
+  .map((element) => {
+    return `<li style="margin: 10px; list-style-type: none; ">
+    <img src="${element.url}" alt="${element.alt}" style=" width: 100%; height: 100%">
+    </li>`;
+  })
+  .join("");
 
 galleryEl.insertAdjacentHTML("beforeend", addImages);
 galleryEl.style.display = "flex";
